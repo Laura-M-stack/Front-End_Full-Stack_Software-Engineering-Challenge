@@ -1,0 +1,19 @@
+<template>
+  <require from="/src/components/ProductCard.html"></require>
+
+  <h1 class="section-title">Condimentum consectetur</h1>
+  <p class="product-count">Showing 20 – from 125 Featured</p>
+
+  <section class="product-grid">
+    <ProductCard repeat.for="product of products" product.bind="product"></ProductCard>
+  </section>
+  <nav class="pagination">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <span>...</span>
+    <a href="#">11</a>
+  </nav>
+  
+</template>
