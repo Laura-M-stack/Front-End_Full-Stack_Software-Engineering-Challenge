@@ -1,0 +1,38 @@
+<template>
+  <div class="product-card">
+    <div class="card-top">
+      <!-- Badges: ON SALE + IN STOCK -->
+      <div class="badges">
+        <div class="on-sale">ON SALE</div>
+        <div class="in-stock">IN STOCK</div>
+      </div>
+
+      <!-- Quantity Selector -->
+      <div class="quantity-controls">
+        <span class="qty">${this.quantity}</span>
+        <div class="arrows">
+          <button class="arrow up" click.trigger="increaseQty()">&#x25B2;</button>
+          <button class="arrow down" click.trigger="decreaseQty()">&#x25BC;</button>
+        </div>
+      </div>
+    </div>
+
+    <img src.bind="product.image" alt.bind="product.name" />
+
+    <h3>${product.name}</h3>
+    <p class="description">${product.description}</p>
+
+    <p class="price">
+      $${product.price.toFixed(2)}
+      <span class="original-price">$${product.originalPrice.toFixed(2)}</span>
+    </p>
+
+    <div class="buttons">
+      <button class="details-btn">DETAILS</button>
+      <button class="add-btn" click.trigger="addToCart()">
+        <img src="/src/assets/icon-cart.png" alt="Cart" class="btn-icon" />
+        ADD</button>
+     
+          </div>
+  </div>
+</template>
