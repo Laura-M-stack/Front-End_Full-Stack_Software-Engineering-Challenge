@@ -11,6 +11,8 @@
   --color-sale:  #38e29c;
   --color-original-price: #fd4949;
   --color-line: #4b6085;
+  --border: #4a4a68;
+
 }
 
 /* Global */
@@ -227,13 +229,6 @@ a {
   margin-left: auto;
   font-size: 12px;
   color: var(--color-text-primary);
-}
-
-:root {
-  --card-bg: #2e3047;
-  --text-primary: #ffffff;
-  --text-muted: #cccccc;
-  --border: #4a4a68;
 }
 
 .product-card {
