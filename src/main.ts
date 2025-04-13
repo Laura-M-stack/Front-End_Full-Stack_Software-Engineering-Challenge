@@ -4,6 +4,7 @@ import {PLATFORM} from 'aurelia-pal';
 import './styles/main.css';
 
 
+
 export function configure(aurelia: Aurelia): void {
   aurelia.use
     .standardConfiguration()
