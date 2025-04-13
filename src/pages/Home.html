@@ -1,19 +1,73 @@
 <template>
-  <require from="/src/components/ProductCard.html"></require>
+  <import from="../components/ProductCard"></import>
 
-  <h1 class="section-title">Condimentum consectetur</h1>
-  <p class="product-count">Showing 20 – from 125 Featured</p>
+  <div class="wrapper">
+    <h1 class="section-title">Welcome to Chicks Gold.</h1>
 
-  <section class="product-grid">
-    <ProductCard repeat.for="product of products" product.bind="product"></ProductCard>
-  </section>
-  <nav class="pagination">
-    <a href="#">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <span>...</span>
-    <a href="#">11</a>
-  </nav>
-  
+    <!-- Header filters section (visual only for now) -->
+    <!-- Could be wired later for actual filtering -->
+    <div class="filters-container">
+      <div class="filter-section game-selector">
+        <i class="icon-game">🎮</i>
+        <span>Select a game</span>
+        <i class="icon-dropdown">▼</i>
+      </div>
+
+      <div class="filter-section search-bar">
+        <i class="icon-search">🔍</i>
+        <input type="text" placeholder="Search">
+      </div>
+
+      <div class="filter-section price-filter">
+        <i class="icon-price">💰</i>
+        <span>Price</span>
+        <span class="filter-value">All</span>
+        <i class="icon-dropdown">▼</i>
+      </div>
+
+      <div class="filter-section item-type">
+        <i class="icon-type">🏷️</i>
+        <span>Item Type</span>
+        <span class="filter-value">All</span>
+        <i class="icon-dropdown">▼</i>
+      </div>
+    </div>
+
+    <!-- Products section -->
+    <div class="products-container">
+      <!-- Displays static product count and sort option -->
+      <div class="status-bar">
+        <div class="product-counter">Showing 15 - from 125</div>
+        <div class="sort-section">
+          <i class="icon-sort">⇅</i>
+          <span>Sort by</span>
+          <span class="sort-value">Featured</span>
+          <i class="icon-dropdown">▼</i>
+        </div>
+      </div>
+
+      <!-- Responsive grid of product cards -->
+      <!-- Each product is rendered using a reusable ProductCard component -->
+      <section class="product-grid">
+        <section class="products">
+          <product-card repeat.for="product of products"
+                        product.bind="product"
+                        add-to-cart.delegate="addToCart(product)"
+                        increment.delegate="increment(product)"
+                        decrement.delegate="decrement(product)">
+          </product-card>
+        </section>
+      </section>
+    </div>
+
+    <!-- Static pagination links (non-functional for now) -->
+    <nav class="pagination">
+      <a href="#">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <span>...</span>
+      <a href="#">11</a>
+    </nav>
+  </div>
 </template>
