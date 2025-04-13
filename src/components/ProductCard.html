@@ -1,38 +1,41 @@
 <template>
   <div class="product-card">
+    <!-- Card top section with badges and quantity controls -->
     <div class="card-top">
-      <!-- Badges: ON SALE + IN STOCK -->
       <div class="badges">
         <div class="on-sale">ON SALE</div>
-        <div class="in-stock">IN STOCK</div>
+        <div class="in-stock">In stock</div>
       </div>
-
-      <!-- Quantity Selector -->
       <div class="quantity-controls">
-        <span class="qty">${this.quantity}</span>
+        <span class="qty">${product.quantity || 1}</span>
         <div class="arrows">
-          <button class="arrow up" click.trigger="increaseQty()">&#x25B2;</button>
-          <button class="arrow down" click.trigger="decreaseQty()">&#x25BC;</button>
+          <button class="arrow" click.delegate="increment()">▲</button>
+          <button class="arrow" click.delegate="decrement()">▼</button>
         </div>
       </div>
     </div>
 
-    <img src.bind="product.image" alt.bind="product.name" />
+    <!-- Product image -->
+    <img class="product-image" src.bind="product.image" alt.bind="product.name" />
 
+    <!-- Product name -->
     <h3>${product.name}</h3>
+
+    <!-- Price information -->
+    <div class="price-info">
+      <span class="price">$${product.price.toFixed(2)}</span>
+      <span class="original-price">$${product.originalPrice.toFixed(2)}</span>
+    </div>
+
+    <!-- Product description -->
     <p class="description">${product.description}</p>
 
-    <p class="price">
-      $${product.price.toFixed(2)}
-      <span class="original-price">$${product.originalPrice.toFixed(2)}</span>
-    </p>
-
-    <div class="buttons">
+    <!-- Action buttons -->
+    <div class="card-actions">
       <button class="details-btn">DETAILS</button>
-      <button class="add-btn" click.trigger="addToCart()">
-        <img src="/src/assets/icon-cart.png" alt="Cart" class="btn-icon" />
-        ADD</button>
-     
-          </div>
+      <button class="add-btn" click.delegate="addToCart()">
+        ADD <img src="../assets/icon-cart.png" alt="Cart" class="cart-icon" />
+      </button>
+    </div>
   </div>
 </template>

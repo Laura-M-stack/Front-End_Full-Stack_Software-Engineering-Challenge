@@ -1,18 +1,16 @@
+import { bindable } from 'aurelia-framework';
+import type { Product } from '../types/Product';
+
 export class ProductCard {
-  product: any;
-  quantity = 1;
+  @bindable()
+  product!: Product;
 
-  increaseQty() {
-    this.quantity++;
-  }
+  @bindable()
+  addToCart!: () => void;
 
-  decreaseQty() {
-    if (this.quantity > 1) {
-      this.quantity--;
-    }
-  }
+  @bindable()
+  increment!: () => void;
 
-  addToCart() {
-    alert(`Added ${this.quantity} "${this.product.name}" to cart`);
-  }
+  @bindable()
+  decrement!: () => void;
 }
