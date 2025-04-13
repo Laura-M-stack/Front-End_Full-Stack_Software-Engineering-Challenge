@@ -1,11 +1,14 @@
 <template>
   <div class="product-card">
-    <!-- Card top section with badges and quantity controls -->
+    <!-- Card top section with status badges and quantity controls -->
     <div class="card-top">
       <div class="badges">
         <div class="on-sale">ON SALE</div>
         <div class="in-stock">In stock</div>
       </div>
+
+      <!-- Quantity counter, bound to product object -->
+      <!-- Uses increment() and decrement() methods from the parent context -->
       <div class="quantity-controls">
         <span class="qty">${product.quantity || 1}</span>
         <div class="arrows">
@@ -15,13 +18,13 @@
       </div>
     </div>
 
-    <!-- Product image -->
+    <!-- Dynamically bound product image and alt text for accessibility -->
     <img class="product-image" src.bind="product.image" alt.bind="product.name" />
 
     <!-- Product name -->
     <h3>${product.name}</h3>
 
-    <!-- Price information -->
+    <!-- Price and original price (struck through for sale display) -->
     <div class="price-info">
       <span class="price">$${product.price.toFixed(2)}</span>
       <span class="original-price">$${product.originalPrice.toFixed(2)}</span>
@@ -30,7 +33,7 @@
     <!-- Product description -->
     <p class="description">${product.description}</p>
 
-    <!-- Action buttons -->
+    <!-- Action buttons: details (non-functional) and ADD (with cart icon and click handler) -->
     <div class="card-actions">
       <button class="details-btn">DETAILS</button>
       <button class="add-btn" click.delegate="addToCart()">
