@@ -1,22 +1,48 @@
 <template>
+  <!-- Main site navigation bar -->
   <nav class="navbar">
-    <div class="logo"> <img src="/assets/logo-chicks-gold.svg" alt="Chicks Gold logo" /></div>
-    <div class="menu">
-      <a href="#">CURRENCY</a>
-      <a href="#">ITEMS</a>
-      <a href="#">ACCOUNTS</a>
-      <a href="#">SERVICES</a>
-      <a href="#">SWAP</a>
+    <div class="navbar-left">
+      <div class="logo-section">
+        <div class="logo">
+          <img src="../assets/chicks-logo.svg" alt="Chicks Gold logo" />
+        </div>
+        <div class="divider"></div>
+      </div>
     </div>
+
+    <!-- Hamburger icon (shown only on small screens) -->
+    <!-- Used to toggle the visibility of nav links on smaller viewports -->
+    <button class="hamburger" click.delegate="toggleMenu()">☰</button>
+
+    <!-- Main nav links -->
+    <!-- Uses dynamic class binding to toggle visibility when hamburger is clicked -->
+    <div class="menu" class.bind="menuOpen ? 'menu open' : 'menu'">
+      <a href="#">CURRENCY <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      <a href="#">ITEMS <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      <a href="#">ACCOUNTS <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      <a href="#">SERVICES <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      <a href="#">SWAP <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      <a href="#">SELL <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+    </div>
+
+    <!-- Right-aligned top bar -->
+    <!-- Displays currency selector, cart indicator with dynamic item count, and sign-in button -->
     <div class="top-bar">
-      <a href="#">USD</a>   
-      <a href="#">CART</a>       
+      <a href="#">USD <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" /></a>
+      
+      <!-- The cart count is dynamically pulled from CartService -->
+      <div class="cart-indicator">
+        <a href="/cart">
+          <img src="../assets/icon-cart.png" alt="Cart" />  
+          CART (<span>${cartCount}</span>)
+          <img class="arrow-ico" src="../assets/icon-nav-arrow.ico" alt="arrow icon" />
+        </a>
+      </div>
+
       <button class="sign-in-btn">
         SIGN IN
         <img src="/src/assets/icon-user.png" alt="User" class="btn-icon" />
       </button>
-      
     </div>
-    
   </nav>
 </template>
