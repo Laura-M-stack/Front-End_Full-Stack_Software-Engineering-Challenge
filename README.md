@@ -78,18 +78,6 @@ au run --watch
 
 Then open http://localhost:8080 in your browser.
 
-## Live demo
-
-You can view the deployed version of the project here:  
-**[https://your-deploy-url.netlify.app](https://your-deploy-url.netlify.app)**
-
-## Preview
-
-Below is a short preview of the application in action:
-
-![Chicks Gold Challenge Preview](assets/demo.gif)
-
-The GIF demonstrates layout responsiveness, cart interaction, and visual fidelity compared to the original design.
 
 ## Project structure and organization
 
