@@ -1,112 +1,128 @@
-
 # Chicks Gold – Front-End Challenge
 
 This project was developed as part of a front-end technical challenge for a software engineering position. The goal was to replicate, as faithfully as possible, a product listing page from the Chicks Gold website using HTML, CSS, and JavaScript (no UI frameworks). The project also uses Aurelia as the front-end framework to match the company's tech stack.
 
+## Live Demo
+
+Deployed version: [https://chicks-gold-mockup.netlify.app](https://chicks-gold-mockup.netlify.app)
+
+Preview GIF: `assets/chicks_gold_page_preview.gif`
+
+> ⚠ Note: The deployed version does not render the full page as expected due to time constraints, but the repository includes all components and styling.
+
 ## About the project
 
-The application consists of a mock of a full product listing page, not just a responsive grid. It includes a styled navbar, product cards with full interactivity, and a footer with branding, links, and contact info. 
+The application consists of a mock of a full product listing page, not just a responsive grid. It includes a styled navbar, product cards, and a footer with branding, links, and contact info.
 
-Cards display:
+Cards are designed to display:
 - Product image, title, and description
 - Price and original price (struck-through)
 - ON SALE bullet and IN STOCK badge
 - Quantity counter with arrow buttons
 - Add and Details buttons
-- Functional cart service that tracks quantity and updates the top bar
 
-The interface is responsive, clean, and based on the company’s real site design.
+A cart icon in the navbar is meant to reflect the total items added via each card's "ADD" button.
+
+## What was implemented
+
+- Fully responsive layout (desktop, tablet, mobile)
+- CSS grid with fluid spacing and breakpoints
+- Reusable product card component
+- Dark theme using CSS variables
+- Navbar with hamburger menu on small screens
+- Static mock product list (via `products.ts`)
+- Button and counter styles matching the reference design
+- Hover interactions and visual polish
+
+## Not fully functional
+
+While the UI structure and interactions are mostly present, the following features were not completed or functional by the deadline:
+
+- The quantity counter on each card visually updates, but does not update the cart count on click
+- The "ADD" button logic to increment the global cart count did not function correctly
+- `clamp()` for responsive typography was removed due to layout issues and replaced with fixed rem units
+- The deployed Netlify version did not render properly due to time constraints and build/debug limitations
 
 ## Tech Stack
 
 - Aurelia v3.0.4
-- TypeScript
+- TypeScript (first time using it in a real project)
 - Pure CSS (no frameworks)
 - Webpack (via Aurelia CLI)
 
 ## Decisions and process
 
-- I used Aurelia because it's the front-end framework used by the company. Although I hadn't worked with it before, I had previously installed and explored it briefly. I found its syntax intuitive and familiar, especially coming from Django's templating style.
+- I chose Aurelia to align with the company's tech stack. Although this was my first real project with it, I found its templating and binding system familiar and enjoyable to use.
 
-- To replicate the original design, I extracted colors directly from the official site using the Color Picker extension.
+- I extracted exact colors from the original Chicks Gold site using browser extensions and Color Picker to ensure accurate visual reproduction.
 
-- I used VisualBug, a tool I installed during the company's logic bootcamp (an earlier step in the selection process), to inspect spacing, background colors, and layout structure.
+- Images such as cards'pictures (sourced from the Roblox marketplace), footer icons, logos and Chicks Gold favicon , were processed in Photoroom to remove backgrounds, and exported as transparent PNGs for consistent styling.
 
-- The logo, title, and fonts were taken directly from the official Chicks Gold website to maintain brand consistency.
+- A clean structure with clear separation of assets, data, types, and UI components was prioritized from the start.
 
-- For the product images, I explored several sources and ended up choosing assets from the Roblox marketplace. They offer a wide variety of high-quality visuals that suited the layout and theme of the cards. I captured the images with minimal margin and processed them in Photoroom to convert them to PNG and remove the backgrounds for visual consistency.
+- While some JS logic wasn't fully completed, the application is visually close to the original and responsive across breakpoints.
 
-- I noticed the design says "showing 20 products of 125", but only 15 are shown on screen in a 5x3 grid. So I updated the mock to display 15 products and changed the text to "showing 15 products of 125" to reflect what the user actually sees.
+## Responsive Design
 
-- The JSON data with the products is kept in a separate TypeScript file (`src/data/products.ts`) and uses `require()` to load images correctly with Webpack. The products follow a consistent interface defined in `src/types/Product.ts`.
-
-- The layout starts from the desktop version provided in the mock and adapts progressively for smaller screens using media queries. The 5-column grid was preserved on large screens, with transitions to 3, 2, and 1 column layouts as the screen size decreases.
-
-- A responsive hamburger menu was implemented to improve navigation on mobile devices while keeping the same menu structure and design. The menu is hidden by default on small screens and toggled via a button.
-
-- A set of CSS root variables was introduced to manage the color theme consistently across the application. These variables centralize background, text, and button colors, improving maintainability and visual coherence.
-
-- Product images were carefully selected from the Roblox marketplace, then processed with Photoroom to remove backgrounds and enhance integration with the UI. This technique ensured they visually matched the original cards.
-
-- CSS comments were added where useful to clarify layout logic, visual decisions, and behavior — while avoiding redundancy.
-
-## Responsive Design Approach
-
-As the mockup provided was desktop-only, I implemented a mobile-first strategy using media queries and flexible units. Key responsive decisions include:
-
-- Navigation collapses into a hamburger menu on screens smaller than 600px, maintaining the same structure and styles.
-- Product grid adapts progressively: 5 columns on large screens, 3 on medium (≤1199px), 2 on tablets (≤899px), and 1 on small devices (≤599px).
-- Font sizes scale fluidly using `clamp()`, allowing text to adapt across breakpoints without abrupt jumps.
-- Touch-friendly spacing and layout adjustments enhance usability on mobile.
-
-This approach ensures the UI remains clean, accessible, and visually consistent across all devices.
+- Navbar collapses into a hamburger menu on smaller screens
+- Product grid adjusts from 5 columns (desktop) to 1 column (mobile)
+- Layout adapts with media queries (no `clamp()` used in final version)
+- Grid and card spacing adjust for usability on touch devices
 
 ## How to run locally
 
 1. Clone the repository  
 2. Install dependencies:
 
-```
+```bash
 npm install
 ```
 
-3. Run the development server:
+3. Start the development server:
 
-```
+```bash
 au run --watch
 ```
 
-Then open http://localhost:8080 in your browser.
+Then open [http://localhost:8080](http://localhost:8080) in your browser.
 
-
-## Project structure and organization
-
-This project follows a modular file structure that separates views, data, and types for maintainability and clarity.
-
-### Folder structure
+## Project structure
 
 ```
 src/
-├── assets/               # Images used in the app
-│   └── [product-images].png
-├── data/                 # Static mock data (product list)
-│   └── products.ts
-├── pages/                # Main views and components
-│   ├── Home.ts
-│   └── Home.html
-├── services/             # Shared app logic (e.g., cart)
-│   └── cart-service.ts
-├── types/                # Shared TypeScript interfaces
-│   └── Product.ts
+├── assets/               # Images, icons, and other static media
 ├── components/           # Reusable UI components
-│   └── ProductCard.ts / ProductCard.html
+│   ├── Footer.html
+│   ├── Footer.ts
+│   ├── Navbar.html
+│   ├── Navbar.ts
+│   ├── ProductCard.html
+│   └── ProductCard.ts
+├── data/                 # Static product data
+│   └── products.ts
+├── pages/                # Main views
+│   ├── Home.html
+│   └── Home.ts
+├── resources/            # Aurelia resource registry
+│   └── index.ts
+├── services/             # Application logic (e.g., cart)
+│   └── cart-service.ts
+├── styles/               # Global stylesheet
+│   └── main.css
+├── types/                # Type declarations and interfaces
+│   ├── global.d.ts
+│   ├── images.d.ts
+│   └── Product.ts
+├── app.html              # Root application view
+├── cart-counter.ts       # Simple cart state utility
+└── main.ts               # App entry point
 ```
 
-### TypeScript interface
+## TypeScript model
 
-To maintain type safety and clarity, a `Product` interface was created in `src/types/Product.ts`. It defines the structure used across the app for product data.
+Defined in `src/types/Product.ts`:
 
-```
+```ts
 export interface Product {
   id: number;
   name: string;
@@ -117,8 +133,10 @@ export interface Product {
 }
 ```
 
-This interface is used in `products.ts` and could later be reused in cart management, filtering, or product detail pages.
+Reflections
 
-## Learnings and reflections
+This was my first time using TypeScript and Aurelia in a real project. I enjoyed working with both — Aurelia’s syntax feels clean and logical, and TypeScript gave me more confidence when structuring components and handling data.
 
-This challenge gave me the opportunity to explore a new front-end framework while focusing on UI precision and responsive design. I learned the basics of Aurelia and appreciated its template syntax, reactivity, and overall developer experience. The process also reinforced the importance of small UX decisions, visual consistency, and brand alignment.
+Even though I couldn’t finish every interaction I planned, I focused on polish, layout, and keeping the code maintainable and clear. With more time, I’m sure I could improve the logic, add missing functionality, and optimize performance.
+
+I'm truly grateful for the opportunity to take part in this challenge. I learned a lot throughout the process and would love the chance to apply that experience—and everything I continue to learn—on your team. Thanks again for the opportunity and your time!
