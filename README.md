@@ -6,7 +6,7 @@ This project was developed as part of a front-end technical challenge for a soft
 
 Deployed version: [https://chicks-gold-mockup.netlify.app](https://chicks-gold-mockup.netlify.app)
 
-Preview GIF: `assets/chicks_gold_page_preview.gif`
+Preview GIF: ![Demo of Mock Chicks Gold Page](./assets/chicks_gold_page_preview.gif)`
 
 > ⚠ Note: The deployed version does not render the full page as expected due to time constraints, but the repository includes all components and styling.
 
