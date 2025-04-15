@@ -12,8 +12,8 @@
       <div class="quantity-controls">
         <span class="qty">${product.quantity || 1}</span>
         <div class="arrows">
-          <button class="arrow" click.delegate="increment()">▲</button>
-          <button class="arrow" click.delegate="decrement()">▼</button>
+          <button class="arrow" click.delegate="increment(product)">▲</button>
+          <button class="arrow" click.delegate="decrement(product)">▼</button>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
     <!-- Action buttons: details (non-functional) and ADD (with cart icon and click handler) -->
     <div class="card-actions">
       <button class="details-btn">DETAILS</button>
-      <button class="add-btn" click.delegate="addToCart()">
+      <button class="add-btn" click.delegate="addToCart(product)">
         ADD <img src="../assets/icon-cart.png" alt="Cart" class="cart-icon" />
       </button>
     </div>

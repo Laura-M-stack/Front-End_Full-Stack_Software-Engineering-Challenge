@@ -9,12 +9,10 @@ export class ProductCard {
 
   // Handler functions delegated from the parent context
   // These allow the card to trigger external actions like cart updates
-  @bindable()
-  addToCart!: () => void;
+  @bindable() addToCart!: (product: Product) => void;
 
-  @bindable()
-  increment!: () => void;
+  @bindable()increment!: (product: Product) => void;
+  
+  @bindable() decrement!: (product: Product) => void;
 
-  @bindable()
-  decrement!: () => void;
 }
